@@ -1,4 +1,5 @@
 import './App.css'
+import { useState } from 'react'
 import barline from './assets/sib-imgs/Barline.png'
 import staff from './assets/sib-imgs/Stave-lines-1-system.png'
 import timeSignature from './assets/sib-imgs/4-4.png'
@@ -22,9 +23,32 @@ import sixteenthTwod816 from './assets/sib-imgs/sixteenth-two-d8-16.png'
 import sixteenthTwo16d8 from './assets/sib-imgs/sixteenth-two-16-d8.png'
 import sixteenthTwo from './assets/sib-imgs/sixteenth-two-16-16.png'
 
+
 function App() {
+  const [beats, setBeats] = useState(calcBeats());
+
+  function handleClick() {
+    setBeats(calcBeats());
+  }
+
+  return (
+    <div className="bar-container">
+      <img className="staff" src={staff} alt="staff" />
+      <img className="barline start" src={barline} alt="barline" />
+      <img className="time-signature " src={timeSignature} alt="time-signature" />
+      {beats[0]}
+      {beats[1]}
+      {beats[2]}
+      {beats[3]}
+      <img className="barline end" src={barline} alt="barline" />
+      <button className="new-bar" onClick={handleClick}>New Bar</button>
+    </div>
+  )
+}
+
+function calcBeats() {
   const rhythm = generateRandomRhythm();
-  const beats = []
+  const beats = [];
   for (let i = 0; i < 16; i += 4) {
     const currBeat = rhythm.slice(i, i + 4);
     let number;
@@ -42,22 +66,9 @@ function App() {
         number = 'four';
         break;
     }
-
-    beats.push(setImagesForBeat(currBeat, number))
+    beats.push(setImagesForBeat(currBeat, number));
   }
-
-  return (
-    <div className="bar-container">
-      <img className="staff" src={staff} alt="staff" />
-      <img className="barline start" src={barline} alt="barline" />
-      <img className="time-signature " src={timeSignature} alt="time-signature" />
-      {beats[0]}
-      {beats[1]}
-      {beats[2]}
-      {beats[3]}
-      <img className="barline end" src={barline} alt="barline" />
-    </div>
-  )
+  return beats
 }
 
 function generateRandomRhythm() {
