@@ -1,32 +1,26 @@
 import './App.css'
-import './assets/Barline.png'
-import './assets/Stave-lines-1-system.png'
-import './assets/4-4.png'
-import './assets/sib-imgs/whole-note.png'
-import './assets/sib-imgs/whole-rest.png'
-import './assets/sib-imgs/half-note.png'
-import './assets/sib-imgs/half-rest.png'
-import './assets/sib-imgs/dotted-half-note.png'
-import './assets/sib-imgs/dotted-half-rest.png'
-import './assets/sib-imgs/quarter-note.png'
-import './assets/sib-imgs/quarter-rest.png'
-import './assets/sib-imgs/dotted-quarter-note.png'
-import './assets/sib-imgs/dotted-quarter-rest.png'
-import './assets/sib-imgs/eighth-note.png'
-import './assets/sib-imgs/eighth-two.png'
-import './assets/sib-imgs/eighth-rest.png'
-import './assets/sib-imgs/dotted-eighth-note.png'
-import './assets/sib-imgs/dotted-eighth-rest.png'
-import './assets/sib-imgs/sixteenth-note.png'
-import './assets/sib-imgs/sixteenth-rest.png'
-import './assets/sib-imgs/sixteenth-three-16-8-16.png'
-import './assets/sib-imgs/sixteenth-three-16-16-8.png'
-import './assets/sib-imgs/sixteenth-three-8-16-16.png'
-import './assets/sib-imgs/sixteenth-three.png'
-import './assets/sib-imgs/sixteenth-two-8-16.png'
-import './assets/sib-imgs/sixteenth-two-16-8.png'
-import './assets/sib-imgs/sixteenth-two-16-16.png'
-import './assets/sib-imgs/sixteenth-two-d8-16.png'
+import barline from './assets/sib-imgs/Barline.png'
+import staff from './assets/sib-imgs/Stave-lines-1-system.png'
+import timeSignature from './assets/sib-imgs/4-4.png'
+import quarterNote from './assets/sib-imgs/quarter-note.png'
+import quarterRest from './assets/sib-imgs/quarter-rest.png'
+import eighthNote from './assets/sib-imgs/eighth-note.png'
+import eighthTwo from './assets/sib-imgs/eighth-two.png'
+import eighthRest from './assets/sib-imgs/eighth-rest.png'
+import dottedEighthNote from './assets/sib-imgs/dotted-eighth-note.png'
+import dottedEighthRest from './assets/sib-imgs/dotted-eighth-rest.png'
+import sixteenthNote from './assets/sib-imgs/sixteenth-note.png'
+import sixteenthRest from './assets/sib-imgs/sixteenth-rest.png'
+import sixteenthFour from './assets/sib-imgs/sixteenth-four.png'
+import sixteenthThree16816 from './assets/sib-imgs/sixteenth-three-16-8-16.png'
+import sixteenthThree16168 from './assets/sib-imgs/sixteenth-three-16-16-8.png'
+import sixteenthThree81616 from './assets/sib-imgs/sixteenth-three-8-16-16.png'
+import sixteenthThree from './assets/sib-imgs/sixteenth-three.png'
+import sixteenthTwo816 from './assets/sib-imgs/sixteenth-two-8-16.png'
+import sixteenthTwo168 from './assets/sib-imgs/sixteenth-two-16-8.png'
+import sixteenthTwod816 from './assets/sib-imgs/sixteenth-two-d8-16.png'
+import sixteenthTwo16d8 from './assets/sib-imgs/sixteenth-two-16-d8.png'
+import sixteenthTwo from './assets/sib-imgs/sixteenth-two-16-16.png'
 
 function App() {
   const rhythm = generateRandomRhythm();
@@ -54,14 +48,14 @@ function App() {
 
   return (
     <div className="bar-container">
-      <img className="staff" src="src/assets/Stave-lines-1-system.png" alt="staff" />
-      <img className="barline start" src="src/assets/Barline.png" alt="barline" />
-      <img className="time-signature " src="src/assets/4-4.png" alt="time-signature" />
+      <img className="staff" src={staff} alt="staff" />
+      <img className="barline start" src={barline} alt="barline" />
+      <img className="time-signature " src={timeSignature} alt="time-signature" />
       {beats[0]}
       {beats[1]}
       {beats[2]}
       {beats[3]}
-      <img className="barline end" src="src/assets/Barline.png" alt="barline" />
+      <img className="barline end" src={barline} alt="barline" />
     </div>
   )
 }
@@ -81,88 +75,88 @@ function setImagesForBeat(beatArray, beatNumber) {
   const beatImage = [];
   if (beatArray.every((val, index) => val === [false, false, false, false][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`quarter-rest note ${beatNumber}`} src="src/assets/sib-imgs/quarter-rest.png" alt="quarter-rest" />
+      <img key={beatNumber} className={`quarter-rest note ${beatNumber}`} src={quarterRest} alt="quarter-rest" />
     )
   } else if (beatArray.every((val, index) => val === [true, false, false, false][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`quarter-note note ${beatNumber}`} src="src/assets/sib-imgs/quarter-note.png" alt="quarter-note" />
+      <img key={beatNumber} className={`quarter-note note ${beatNumber}`} src={quarterNote} alt="quarter-note" />
     )
   } else if (beatArray.every((val, index) => val === [false, true, false, false][index])) {
     beatImage.push(
       <div key={beatNumber}>
-        <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`}src="src/assets/sib-imgs/sixteenth-rest.png" alt="sixteenth-rest" />
-        <img key={beatNumber + 10} className={`dotted-eighth-note note e-of-${beatNumber}`} src="src/assets/sib-imgs/dotted-eighth-note.png" alt="dotted-eighth-note" />
+        <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src={sixteenthRest} alt="sixteenth-rest" />
+        <img key={beatNumber + 10} className={`dotted-eighth-note note e-of-${beatNumber}`} src={dottedEighthNote} alt="dotted-eighth-note" />
       </div>
     )
   } else if (beatArray.every((val, index) => val === [false, false, true, false][index])) {
     beatImage.push(
       <div key={beatNumber}>
-        <img key={beatNumber + 5} className={`eighth-rest note ${beatNumber}`} src="src/assets/sib-imgs/eighth-rest.png" alt="eighth-rest" />
-        <img key={beatNumber + 10} className={`eighth-note note and-of-${beatNumber}`} src="src/assets/sib-imgs/eighth-note.png" alt="eighth-note" />
+        <img key={beatNumber + 5} className={`eighth-rest note ${beatNumber}`} src={eighthRest} alt="eighth-rest" />
+        <img key={beatNumber + 10} className={`eighth-note note and-of-${beatNumber}`} src={eighthNote} alt="eighth-note" />
       </div>
     )
   } else if (beatArray.every((val, index) => val === [false, false, false, true][index])) {
     beatImage.push(
       <div key={beatNumber}>
-        <img key={beatNumber + 5} className={`dotted-eighth-rest note ${beatNumber}`} src="src/assets/sib-imgs/dotted-eighth-rest.png" alt="dotted-eighth-rest" />
-        <img key={beatNumber + 10} className={`sixteenth-note note a-of-${beatNumber}`} src="src/assets/sib-imgs/sixteenth-note.png" alt="sixteenth-note" />
+        <img key={beatNumber + 5} className={`dotted-eighth-rest note ${beatNumber}`} src={dottedEighthRest} alt="dotted-eighth-rest" />
+        <img key={beatNumber + 10} className={`sixteenth-note note a-of-${beatNumber}`} src={sixteenthNote} alt="sixteenth-note" />
       </div>
     )
   } else if (beatArray.every((val, index) => val === [true, true, false, false][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-two-16-d8.png" alt="sixteenth-two-16-d8" />
+      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthTwo16d8} alt="sixteenth-two-16-d8" />
     )
   } else if (beatArray.every((val, index) => val === [false, true, true, false][index])) {
     beatImage.push(
       <div key={beatNumber}>
-        <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-rest.png" alt="sixteenth-rest" />
-        <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src="src/assets/sib-imgs/sixteenth-two-16-8.png" alt="sixteenth-two-16-8" />
+        <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src={sixteenthRest} alt="sixteenth-rest" />
+        <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src={sixteenthTwo168} alt="sixteenth-two-16-8" />
       </div>
     )
   } else if (beatArray.every((val, index) => val === [false, false, true, true][index])) {
     beatImage.push(
       <div key={beatNumber}>
-        <img key={beatNumber + 5} className={`eighth-rest note ${beatNumber}`} src="src/assets/sib-imgs/eighth-rest.png" alt="eighth-rest" />
-        <img key={beatNumber + 10} className={`sixteenth-2 note and-of-${beatNumber}`} src="src/assets/sib-imgs/sixteenth-two-16-16.png" alt="sixteenth-two" />
+        <img key={beatNumber + 5} className={`eighth-rest note ${beatNumber}`} src={eighthRest} alt="eighth-rest" />
+        <img key={beatNumber + 10} className={`sixteenth-2 note and-of-${beatNumber}`} src={sixteenthTwo} alt="sixteenth-two" />
       </div>
     )
   } else if (beatArray.every((val, index) => val === [true, false, false, true][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-two-d8-16.png" alt="sixteenth-two-d8-16" />
+      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthTwod816} alt="sixteenth-two-d8-16" />
     )
   } else if (beatArray.every((val, index) => val === [true, false, true, false][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`eighth-two note ${beatNumber}`} src="src/assets/sib-imgs/eighth-two.png" alt="eighth-two" />
+      <img key={beatNumber} className={`eighth-two note ${beatNumber}`} src={eighthTwo} alt="eighth-two" />
     )
   } else if (beatArray.every((val, index) => val === [false, true, false, true][index])) {
     beatImage.push(
       <div key={beatNumber}>
-        <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-rest.png" alt="sixteenth-rest" />
-        <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src="src/assets/sib-imgs/sixteenth-two-8-16.png" alt="sixteenth-two-8-16" />
+        <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src={sixteenthRest} alt="sixteenth-rest" />
+        <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src={sixteenthTwo816} alt="sixteenth-two-8-16" />
       </div>
     )
   } else if (beatArray.every((val, index) => val === [true, true, true, false][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`sixteenth-3 note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-three-16-16-8.png" alt="sixteenth-three-16-16-8" />
+      <img key={beatNumber} className={`sixteenth-3 note ${beatNumber}`} src={sixteenthThree16168} alt="sixteenth-three-16-16-8" />
     )
   } else if (beatArray.every((val, index) => val === [false, true, true, true][index])) {
     beatImage.push(
       <div key={beatNumber}>
-        <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-rest.png" alt="sixteenth-rest" />
-        <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src="src/assets/sib-imgs/sixteenth-three.png" alt="sixteenth-three" />
+        <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src={sixteenthRest} alt="sixteenth-rest" />
+        <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src={sixteenthThree} alt="sixteenth-three" />
       </div>
     )
   } else if (beatArray.every((val, index) => val === [true, false, true, true][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-three-8-16-16.png" alt="sixteenth-three-8-16-16" />
+      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthThree81616} alt="sixteenth-three-8-16-16" />
     )
   } else if (beatArray.every((val, index) => val === [true, true, false, true][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-three-16-8-16.png" alt="sixteenth-three-16-8-16" />
+      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthThree16816} alt="sixteenth-three-16-8-16" />
     )
   } else if (beatArray.every((val, index) => val === [true, true, true, true][index])) {
     beatImage.push(
-      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src="src/assets/sib-imgs/sixteenth-four.png" alt="sixteenth-four" />
+      <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthFour} alt="sixteenth-four" />
     )
   } 
 
