@@ -8,8 +8,14 @@ body {
   place-items: center;
 }
 
+.new-bar {
+  justify-self: center;
+  align-self: center;
+}
+
 .bar-container {
   position: relative;
+  display: grid;
   height: 200px;
   width: 100vw;
   max-width: 400px;
