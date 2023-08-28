@@ -22,7 +22,7 @@ import sixteenthTwo168 from './assets/sib-imgs/sixteenth-two-16-8.png'
 import sixteenthTwod816 from './assets/sib-imgs/sixteenth-two-d8-16.png'
 import sixteenthTwo16d8 from './assets/sib-imgs/sixteenth-two-16-d8.png'
 import sixteenthTwo from './assets/sib-imgs/sixteenth-two-16-16.png'
-
+import { Beat, Bar, Phrase, createBeat, createBar, createPhrase } from './beatLogic'
 
 function App() {
   const [beats, setBeats] = useState(calcBeats());
@@ -47,125 +47,103 @@ function App() {
 }
 
 function calcBeats() {
-  const rhythm = generateRandomRhythm();
+  const bar = createBar(4);
   const beats = [];
-  for (let i = 0; i < 16; i += 4) {
-    const currBeat = rhythm.slice(i, i + 4);
-    let number;
-    switch (Math.floor(i / 4)) {
-      case (0): 
-        number = 'one';
-        break;
-      case (1):
-        number = 'two';
-        break;
-      case (2):
-        number = 'three';
-        break;
-      case (3):
-        number = 'four';
-        break;
-    }
+  for (let i = 0; i < 4; i++) {
+    const currBeat: string[] = bar.beats[i].subdivisions;
+    let number: string = '';
+    if (i === 0) number = 'one';
+    else if (i === 1) number = 'two';
+    else if (i === 2) number = 'three';
+    else if (i === 3) number = 'four';
     beats.push(setImagesForBeat(currBeat, number));
   }
-  return beats
+  return beats;
 }
-
-function generateRandomRhythm() {
-    const tfTable  = [];
-    const tf = [true, false];
-    let play;
-    for (let i = 0; i < 16; i++) {
-        play = tf[Math.floor(Math.random() * 2)]
-        tfTable.push(play);
-    }
-    return tfTable
-}
-
-function setImagesForBeat(beatArray, beatNumber) {
-  const beatImage = [];
-  if (beatArray.every((val, index) => val === [false, false, false, false][index])) {
+function setImagesForBeat(beatArray: string[], beatNumber: string) {
+  const beatImage: JSX.Element[] = [];
+  if (beatArray.every((val, index) => val === ['0', '0', '0', '0'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`quarter-rest note ${beatNumber}`} src={quarterRest} alt="quarter-rest" />
     )
-  } else if (beatArray.every((val, index) => val === [true, false, false, false][index])) {
+  } else if (beatArray.every((val, index) => val === ['1', '0', '0', '0'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`quarter-note note ${beatNumber}`} src={quarterNote} alt="quarter-note" />
     )
-  } else if (beatArray.every((val, index) => val === [false, true, false, false][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '1', '0', '0'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src={sixteenthRest} alt="sixteenth-rest" />
         <img key={beatNumber + 10} className={`dotted-eighth-note note e-of-${beatNumber}`} src={dottedEighthNote} alt="dotted-eighth-note" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === [false, false, true, false][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '0', '1', '1'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`eighth-rest note ${beatNumber}`} src={eighthRest} alt="eighth-rest" />
         <img key={beatNumber + 10} className={`eighth-note note and-of-${beatNumber}`} src={eighthNote} alt="eighth-note" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === [false, false, false, true][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '0', '0', '1'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`dotted-eighth-rest note ${beatNumber}`} src={dottedEighthRest} alt="dotted-eighth-rest" />
         <img key={beatNumber + 10} className={`sixteenth-note note a-of-${beatNumber}`} src={sixteenthNote} alt="sixteenth-note" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === [true, true, false, false][index])) {
+  } else if (beatArray.every((val, index) => val === ['1', '1', '0', '0'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthTwo16d8} alt="sixteenth-two-16-d8" />
     )
-  } else if (beatArray.every((val, index) => val === [false, true, true, false][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '1', '1', '0'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src={sixteenthRest} alt="sixteenth-rest" />
         <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src={sixteenthTwo168} alt="sixteenth-two-16-8" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === [false, false, true, true][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '0', '1', '1'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`eighth-rest note ${beatNumber}`} src={eighthRest} alt="eighth-rest" />
         <img key={beatNumber + 10} className={`sixteenth-2 note and-of-${beatNumber}`} src={sixteenthTwo} alt="sixteenth-two" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === [true, false, false, true][index])) {
+  } else if (beatArray.every((val, index) => val === ['1', '0', '0', '1'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthTwod816} alt="sixteenth-two-d8-16" />
     )
-  } else if (beatArray.every((val, index) => val === [true, false, true, false][index])) {
+  } else if (beatArray.every((val, index) => val === ['1', '0', '1', '0'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`eighth-two note ${beatNumber}`} src={eighthTwo} alt="eighth-two" />
     )
-  } else if (beatArray.every((val, index) => val === [false, true, false, true][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '1', '0', '1'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src={sixteenthRest} alt="sixteenth-rest" />
         <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src={sixteenthTwo816} alt="sixteenth-two-8-16" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === [true, true, true, false][index])) {
+  } else if (beatArray.every((val, index) => val === ['1', '1', '1', '0'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`sixteenth-3 note ${beatNumber}`} src={sixteenthThree16168} alt="sixteenth-three-16-16-8" />
     )
-  } else if (beatArray.every((val, index) => val === [false, true, true, true][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '1', '1', '1'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`sixteenth-rest note ${beatNumber}`} src={sixteenthRest} alt="sixteenth-rest" />
         <img key={beatNumber + 10} className={`sixteenth-3 note e-of-${beatNumber}`} src={sixteenthThree} alt="sixteenth-three" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === [true, false, true, true][index])) {
+  } else if (beatArray.every((val, index) => val === ['1', '0', '1', '1'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthThree81616} alt="sixteenth-three-8-16-16" />
     )
-  } else if (beatArray.every((val, index) => val === [true, true, false, true][index])) {
+  } else if (beatArray.every((val, index) => val === ['1', '1', '0', '1'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthThree16816} alt="sixteenth-three-16-8-16" />
     )
-  } else if (beatArray.every((val, index) => val === [true, true, true, true][index])) {
+  } else if (beatArray.every((val, index) => val === ['1', '1', '1', '1'][index])) {
     beatImage.push(
       <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthFour} alt="sixteenth-four" />
     )
