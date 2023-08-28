@@ -1,3 +1,5 @@
+// Need to decide on minimums and maximums subdivisionCount, beatCount, and barCount
+
 class Beat {
     subdivisions: string[] // number of subdivisions is implied in the length of this array
 
@@ -7,8 +9,6 @@ class Beat {
         for (let i = 0; i < subdivisionCount; i++) {
             this.subdivisions.push(Math.floor(Math.random() * 2).toString());
         }
-        // e.g. subdivisionCount = 4: '0101'
-        // subdivisionCount = 6: '001100'
     }
 }
 
@@ -17,7 +17,11 @@ class Bar {
 
     constructor(beatCount: number) {
         this.beats = [];
-        // create n beats and push to beat array
+        for (let i = 0; i < beatCount; i++) {
+            // let subdivisionCount = Math.ceil(Math.random() * 4);
+            let subdivisionCount = 4; // hardcoded value for testing
+            this.beats.push(new Beat(subdivisionCount));
+        }
     }
 }
 
@@ -26,7 +30,11 @@ class Phrase {
 
     constructor(barCount: number) {
         this.bars = [];
-        // create n bars and push to bar array
+        for (let i = 0; i < barCount; i++) {
+            // let beatCount = Math.ceil(Math.random() * 6);
+            let beatCount = 4; // hardcoded value for testing
+            this.bars.push(new Bar(beatCount));
+        }
     }
 }
 
@@ -82,4 +90,13 @@ function createBar(beatCount: number): Bar {
 function createPhrase(barCount: number): Phrase {
     // return Phrase with correct bar count
     return new Phrase(barCount);
+}
+
+export {
+    Beat,
+    Bar,
+    Phrase,
+    createBeat,
+    createBar,
+    createPhrase
 }
