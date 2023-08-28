@@ -51,7 +51,7 @@ function calcBeats() {
   const beats = [];
   for (let i = 0; i < 16; i += 4) {
     const currBeat = rhythm.slice(i, i + 4);
-    let number;
+    let number: string = '';
     switch (Math.floor(i / 4)) {
       case (0): 
         number = 'one';
@@ -82,7 +82,7 @@ function generateRandomRhythm() {
     return tfTable
 }
 
-function setImagesForBeat(beatArray, beatNumber) {
+function setImagesForBeat(beatArray: boolean[], beatNumber: string) {
   const beatImage = [];
   if (beatArray.every((val, index) => val === [false, false, false, false][index])) {
     beatImage.push(

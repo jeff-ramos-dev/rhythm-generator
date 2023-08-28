@@ -1,18 +1,32 @@
 class Beat {
     subdivisions: string[] // number of subdivisions is implied in the length of this array
 
-    constructor(n: number) {
+    constructor(subdivisionCount: number) {
         this.subdivisions = [];
         // randomly generate a string of length n and push to subdivisions array
+        for (let i = 0; i < subdivisionCount; i++) {
+            this.subdivisions.push(Math.floor(Math.random() * 2).toString());
+        }
+        // e.g. subdivisionCount = 4: '0101'
+        // subdivisionCount = 6: '001100'
     }
 }
 
 class Bar {
     beats: Beat[]; // number of beats is implied in the length of this array
 
-    constructor(n: number) {
+    constructor(beatCount: number) {
         this.beats = [];
         // create n beats and push to beat array
+    }
+}
+
+class Phrase {
+    bars: Bar[];
+
+    constructor(barCount: number) {
+        this.bars = [];
+        // create n bars and push to bar array
     }
 }
 
@@ -67,4 +81,5 @@ function createBar(beatCount: number): Bar {
 
 function createPhrase(barCount: number): Phrase {
     // return Phrase with correct bar count
+    return new Phrase(barCount);
 }
