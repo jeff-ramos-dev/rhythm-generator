@@ -27,7 +27,6 @@ import { Beat, Bar, Phrase, createBeat, createBar, createPhrase } from './beatLo
 function App() {
   const [beats, setBeats] = useState(calcBeats());
 
-  console.log(beats);
   function handleClick() {
     setBeats(calcBeats());
   }
@@ -52,7 +51,6 @@ function calcBeats() {
   const beatArr = [];
   for (let i = 0; i < 4; i++) {
     const currBeat: string[] = bar.beats[i].subdivisions;
-    console.log(i+1, currBeat)
     let number: string = '';
     if (i === 0) number = 'one';
     else if (i === 1) number = 'two';
@@ -63,7 +61,6 @@ function calcBeats() {
   return beatArr;
 }
 function setImagesForBeat(beatArray: string[], beatNumber: string) {
-  console.log(beatArray);
   const beatImage: JSX.Element[] = [];
   if (beatArray.every((val, index) => val === ['0', '0', '0', '0'][index])) {
     beatImage.push(
