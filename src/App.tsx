@@ -239,7 +239,7 @@ function setImagesForBeat(beatArray: string[], beatNumber: string) {
       />
     )
   } 
-
+        
   return beatImage;
 }
 
