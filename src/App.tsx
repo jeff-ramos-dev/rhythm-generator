@@ -27,6 +27,7 @@ import { Beat, Bar, Phrase, createBeat, createBar, createPhrase } from './beatLo
 function App() {
   const [beats, setBeats] = useState(calcBeats());
 
+  console.log(beats);
   function handleClick() {
     setBeats(calcBeats());
   }
@@ -48,19 +49,21 @@ function App() {
 
 function calcBeats() {
   const bar = createBar(4);
-  const beats = [];
+  const beatArr = [];
   for (let i = 0; i < 4; i++) {
     const currBeat: string[] = bar.beats[i].subdivisions;
+    console.log(i+1, currBeat)
     let number: string = '';
     if (i === 0) number = 'one';
     else if (i === 1) number = 'two';
     else if (i === 2) number = 'three';
     else if (i === 3) number = 'four';
-    beats.push(setImagesForBeat(currBeat, number));
+    beatArr.push(setImagesForBeat(currBeat, number));
   }
-  return beats;
+  return beatArr;
 }
 function setImagesForBeat(beatArray: string[], beatNumber: string) {
+  console.log(beatArray);
   const beatImage: JSX.Element[] = [];
   if (beatArray.every((val, index) => val === ['0', '0', '0', '0'][index])) {
     beatImage.push(
@@ -77,7 +80,7 @@ function setImagesForBeat(beatArray: string[], beatNumber: string) {
         <img key={beatNumber + 10} className={`dotted-eighth-note note e-of-${beatNumber}`} src={dottedEighthNote} alt="dotted-eighth-note" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === ['0', '0', '1', '1'][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '0', '1', '0'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`eighth-rest note ${beatNumber}`} src={eighthRest} alt="eighth-rest" />
@@ -148,7 +151,7 @@ function setImagesForBeat(beatArray: string[], beatNumber: string) {
       <img key={beatNumber} className={`sixteenth-4 note ${beatNumber}`} src={sixteenthFour} alt="sixteenth-four" />
     )
   } 
-
+  console.log(beatImage);
   return beatImage;
 }
 
