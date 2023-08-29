@@ -1,23 +1,20 @@
 // Need to decide on minimums and maximums subdivisionCount, beatCount, and barCount
-import quarterNote from './assets/sib-imgs/quarter-note.png'
-import quarterRest from './assets/sib-imgs/quarter-rest.png'
-import eighthNote from './assets/sib-imgs/eighth-note.png'
-import eighthTwo from './assets/sib-imgs/eighth-two.png'
-import eighthRest from './assets/sib-imgs/eighth-rest.png'
-import dottedEighthNote from './assets/sib-imgs/dotted-eighth-note.png'
-import dottedEighthRest from './assets/sib-imgs/dotted-eighth-rest.png'
-import sixteenthNote from './assets/sib-imgs/sixteenth-note.png'
-import sixteenthRest from './assets/sib-imgs/sixteenth-rest.png'
-import sixteenthFour from './assets/sib-imgs/sixteenth-four.png'
-import sixteenthThree16816 from './assets/sib-imgs/sixteenth-three-16-8-16.png'
-import sixteenthThree16168 from './assets/sib-imgs/sixteenth-three-16-16-8.png'
-import sixteenthThree81616 from './assets/sib-imgs/sixteenth-three-8-16-16.png'
-import sixteenthThree from './assets/sib-imgs/sixteenth-three.png'
-import sixteenthTwo816 from './assets/sib-imgs/sixteenth-two-8-16.png'
-import sixteenthTwo168 from './assets/sib-imgs/sixteenth-two-16-8.png'
-import sixteenthTwod816 from './assets/sib-imgs/sixteenth-two-d8-16.png'
-import sixteenthTwo16d8 from './assets/sib-imgs/sixteenth-two-16-d8.png'
-import sixteenthTwo from './assets/sib-imgs/sixteenth-two-16-16.png'
+import quarterRest from './assets/0000.png'
+import one from './assets/1000.png'
+import e from './assets/0100.png'
+import and from './assets/0010.png'
+import a from './assets/0001.png'
+import oneE from './assets/1100.png'
+import eAnd from './assets/0110.png'
+import andA from './assets/0011.png'
+import oneA from './assets/1001.png'
+import oneAnd from './assets/1010.png'
+import eA from './assets/0101.png'
+import oneEAnd from './assets/1110.png'
+import eAndA from './assets/0111.png'
+import oneAndA from './assets/1011.png'
+import oneEA from './assets/1101.png'
+import oneEAndA from './assets/1111.png'
 
 class Beat {
     subdivisions: string[] // number of subdivisions is implied in the length of this array
@@ -57,7 +54,7 @@ class Phrase {
     }
 }
 
-type SubdivisionMetadata = Record<string, string[]>;
+type SubdivisionMetadata = Record<string, string>;
 
 enum Subdivision {
     THREE = 'THREE',
@@ -77,22 +74,22 @@ const SubdivisionMap: Record<Subdivision, SubdivisionMetadata> = {
         // '111': imageURL,
     },
     [Subdivision.FOUR]: {
-        '0000': [quarterRest], 
-        '1000': [quarterNote], 
-        '0100': [sixteenthRest, dottedEighthNote],
-        '0010': [eighthRest, eighthNote],
-        '0001': [dottedEighthRest, sixteenthNote],
-        '1010': [eighthTwo],
-        '0101': [sixteenthRest, sixteenthTwo816],
-        '1100': [sixteenthTwo16d8],
-        '0110': [sixteenthRest, sixteenthTwo168],
-        '0011': [eighthRest, sixteenthTwo],
-        '1001': [sixteenthTwod816],
-        '1110': [sixteenthThree16168],
-        '0111': [sixteenthRest, sixteenthThree],
-        '1011': [sixteenthThree81616],
-        '1101': [sixteenthThree16816],
-        '1111': [sixteenthFour],
+        '0000': quarterRest, 
+        '1000': one, 
+        '0100': e,
+        '0010': and,
+        '0001': a,
+        '1010': oneAnd,
+        '0101': eA,
+        '1100': oneE,
+        '0110': eAnd,
+        '0011': andA,
+        '1001': oneA,
+        '1110': oneEAnd,
+        '0111': eAndA,
+        '1011': oneAndA,
+        '1101': oneEA,
+        '1111': oneEAndA,
     }
 }
 

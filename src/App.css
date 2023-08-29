@@ -61,87 +61,24 @@ body {
 
 .note {
   position: absolute;
-  height: 40px;
+  height: 30px;
+  width: 19%;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.sixteenth-rest {
-  top: 55%;
-}
-
-.sixteenth-2 {
-  width: 9%;
-}
-
-.sixteenth-3 {
-  width: 14%;
-}
-
-.sixteenth-4 {
-  width: 18%;
-}
-
 .one {
-  left: 10%;
-}
-
-.e-of-one {
   left: 15%;
 }
 
-.and-of-one {
-  left: 20%;
-}
-
-.a-of-one {
-  left: 25%;
-}
-
 .two {
-  left: 30%;
-}
-
-.e-of-two {
   left: 35%;
 }
 
-.and-of-two {
-  left: 40%;
-}
-
-.a-of-two {
-  left: 45%;
-}
-
 .three {
-  left: 50%;
-}
-
-.e-of-three {
   left: 55%;
 }
 
-.and-of-three {
-  left: 60%;
-}
-
-.a-of-three {
-  left: 65%;
-}
-
 .four {
-  left: 70%;
-}
-
-.e-of-four {
   left: 75%;
-}
-
-.and-of-four {
-  left: 80%;
-}
-
-.a-of-four {
-  left: 85%;
 }
