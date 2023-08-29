@@ -77,7 +77,7 @@ function setImagesForBeat(beatArray: string[], beatNumber: string) {
         <img key={beatNumber + 10} className={`dotted-eighth-note note e-of-${beatNumber}`} src={dottedEighthNote} alt="dotted-eighth-note" />
       </div>
     )
-  } else if (beatArray.every((val, index) => val === ['0', '0', '1', '1'][index])) {
+  } else if (beatArray.every((val, index) => val === ['0', '0', '1', '0'][index])) {
     beatImage.push(
       <div key={beatNumber}>
         <img key={beatNumber + 5} className={`eighth-rest note ${beatNumber}`} src={eighthRest} alt="eighth-rest" />
