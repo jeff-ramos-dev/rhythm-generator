@@ -22,7 +22,7 @@ import sixteenthTwo168 from './assets/sib-imgs/sixteenth-two-16-8.png'
 import sixteenthTwod816 from './assets/sib-imgs/sixteenth-two-d8-16.png'
 import sixteenthTwo16d8 from './assets/sib-imgs/sixteenth-two-16-d8.png'
 import sixteenthTwo from './assets/sib-imgs/sixteenth-two-16-16.png'
-import { Beat, Bar, Phrase, createBeat, createBar, createPhrase } from './beatLogic'
+import { createBar, SubdivisionMap } from './beatLogic'
 
 function App() {
   const [beats, setBeats] = useState(calcBeats());
