@@ -1,4 +1,20 @@
 // Need to decide on minimums and maximums subdivisionCount, beatCount, and barCount
+import quarterRest from './assets/0000.png'
+import one from './assets/1000.png'
+import e from './assets/0100.png'
+import and from './assets/0010.png'
+import a from './assets/0001.png'
+import oneE from './assets/1100.png'
+import eAnd from './assets/0110.png'
+import andA from './assets/0011.png'
+import oneA from './assets/1001.png'
+import oneAnd from './assets/1010.png'
+import eA from './assets/0101.png'
+import oneEAnd from './assets/1110.png'
+import eAndA from './assets/0111.png'
+import oneAndA from './assets/1011.png'
+import oneEA from './assets/1101.png'
+import oneEAndA from './assets/1111.png'
 
 class Beat {
     subdivisions: string[] // number of subdivisions is implied in the length of this array
@@ -58,22 +74,22 @@ const SubdivisionMap: Record<Subdivision, SubdivisionMetadata> = {
         // '111': imageURL,
     },
     [Subdivision.FOUR]: {
-        // '0000': imageURL, 
-        // '1000': imageURL, 
-        // '0100': imageURL,
-        // '0010': imageURL,
-        // '0001': imageURL,
-        // '1010': imageURL,
-        // '0101': imageURL,
-        // '1100': imageURL,
-        // '0110': imageURL,
-        // '0011': imageURL,
-        // '1001': imageURL,
-        // '1110': imageURL,
-        // '0111': imageURL,
-        // '1011': imageURL,
-        // '1101': imageURL,
-        // '1111': imageURL,
+        '0000': quarterRest, 
+        '1000': one, 
+        '0100': e,
+        '0010': and,
+        '0001': a,
+        '1010': oneAnd,
+        '0101': eA,
+        '1100': oneE,
+        '0110': eAnd,
+        '0011': andA,
+        '1001': oneA,
+        '1110': oneEAnd,
+        '0111': eAndA,
+        '1011': oneAndA,
+        '1101': oneEA,
+        '1111': oneEAndA,
     }
 }
 
@@ -93,10 +109,6 @@ function createPhrase(barCount: number): Phrase {
 }
 
 export {
-    Beat,
-    Bar,
-    Phrase,
-    createBeat,
     createBar,
-    createPhrase
+    SubdivisionMap
 }
