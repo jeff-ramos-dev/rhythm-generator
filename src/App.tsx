@@ -51,12 +51,12 @@ function calcBeats() {
   const beats = [];
   for (let i = 0; i < 4; i++) {
     const currBeat: string[] = bar.beats[i].subdivisions;
-    let number: string = '';
-    if (i === 0) number = 'one';
-    else if (i === 1) number = 'two';
-    else if (i === 2) number = 'three';
-    else if (i === 3) number = 'four';
-    beats.push(setImagesForBeat(currBeat, number));
+    let beatNumber: string = '';
+    if (i === 0) beatNumber = 'one';
+    else if (i === 1) beatNumber = 'two';
+    else if (i === 2) beatNumber = 'three';
+    else if (i === 3) beatNumber = 'four';
+    beats.push(setImagesForBeat(currBeat, beatNumber));
   }
   return beats;
 }
