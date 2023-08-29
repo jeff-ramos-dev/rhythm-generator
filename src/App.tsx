@@ -48,7 +48,7 @@ function App() {
 
 function calcBeats() {
   const bar = createBar(4);
-  const beats = [];
+  const beatArray = [];
   for (let i = 0; i < 4; i++) {
     const currBeat: string[] = bar.beats[i].subdivisions;
     let beatNumber: string = '';
@@ -56,9 +56,9 @@ function calcBeats() {
     else if (i === 1) beatNumber = 'two';
     else if (i === 2) beatNumber = 'three';
     else if (i === 3) beatNumber = 'four';
-    beats.push(setImagesForBeat(currBeat, beatNumber));
+    beatArray.push(setImagesForBeat(currBeat, beatNumber));
   }
-  return beats;
+  return beatArray;
 }
 function setImagesForBeat(beatArray: string[], beatNumber: string) {
   const beatImage: JSX.Element[] = [];
