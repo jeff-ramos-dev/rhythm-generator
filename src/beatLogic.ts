@@ -15,6 +15,12 @@ import eAndA from './assets/0111.png'
 import oneAndA from './assets/1011.png'
 import oneEA from './assets/1101.png'
 import oneEAndA from './assets/1111.png'
+import tpl from './assets/111.png'
+import p from './assets/010.png'
+import l from './assets/001.png'
+import tp from './assets/110.png'
+import pl from './assets/011.png'
+import tl from './assets/101.png'
 
 class Beat {
     subdivisions: string[] // number of subdivisions is implied in the length of this array
@@ -33,9 +39,11 @@ class Bar {
 
     constructor(beatCount: number) {
         this.beats = [];
+        const possibleSubdivisionCounts: number[] = [3, 4];
+        let subdivisionCount;
         for (let i = 0; i < beatCount; i++) {
-            // let subdivisionCount = Math.ceil(Math.random() * 4);
-            let subdivisionCount = 4; // hardcoded value for testing
+            // subdivisionCount = Math.ceil(Math.random() * 4);
+            subdivisionCount = possibleSubdivisionCounts[Math.floor(Math.random() * 2)];
             this.beats.push(new Beat(subdivisionCount));
         }
     }
@@ -64,14 +72,14 @@ enum Subdivision {
 
 const SubdivisionMap: Record<Subdivision, SubdivisionMetadata> = {
     [Subdivision.THREE]: {
-        // '000': imageURL, 
-        // '100': imageURL, 
-        // '010': imageURL,
-        // '001': imageURL,
-        // '110': imageURL,
-        // '011': imageURL,
-        // '101': imageURL,
-        // '111': imageURL,
+        '000': quarterRest, 
+        '100': one, 
+        '010': p,
+        '001': l,
+        '110': tp,
+        '011': pl,
+        '101': tl,
+        '111': tpl,
     },
     [Subdivision.FOUR]: {
         '0000': quarterRest, 
@@ -110,5 +118,9 @@ function createPhrase(barCount: number): Phrase {
 
 export {
     createBar,
+    createPhrase,
+    Beat,
+    Bar,
+    Phrase,
     SubdivisionMap
 }

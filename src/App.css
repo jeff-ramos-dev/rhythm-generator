@@ -8,23 +8,31 @@ body {
   place-items: center;
 }
 
-.new-bar {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.new {
   border: 2px solid grey;
   border-radius: 5px;
   padding: 4px;
   background-color: black;
   color: white;
+}
 
+.setting {
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 4px;
+  background-color: black;
+  color: white;
 }
 
 .bar-container {
   position: relative;
   display: grid;
-  height: 200px;
+  height: 100px;
   width: 100vw;
   max-width: 400px;
 }
@@ -65,6 +73,12 @@ body {
   width: 19%;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.triplet {
+  height: 50px;
+  width: 18%;
+  transform: translateY(-69%);
 }
 
 .one {
