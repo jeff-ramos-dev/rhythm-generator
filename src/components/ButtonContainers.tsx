@@ -13,13 +13,13 @@ export default function ButtonContainers(props: buttonProps) {
             <div className="buttonContainer">
                 <button 
                     className="new" 
-                    onClick={(event) => handleClick}
+                    onClick={(event) => handleClick(event)}
                 >
                     New {state} 
                 </button>
                 <button 
                     className="setting" 
-                    onClick={(event) => handleSetting}
+                    onClick={(event) => handleSetting(event)}
                 >
                     Switch to {state === 'phrase' ? 'Bar' : 'Phrase'} 
                 </button>

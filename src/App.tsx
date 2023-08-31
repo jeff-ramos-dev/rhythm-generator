@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Bar, Phrase, difficultyLevels } from './utils.ts'
 import PhraseElement from './components/PhraseElement.tsx'
 import BarElement from './components/BarElement.tsx'
+import ButtonContainers from './components/ButtonContainers.tsx'
 
 function App() {
   const initialBar = new Bar(4, 'mild');
@@ -39,32 +40,26 @@ function App() {
     return (
       <>
         <PhraseElement phrase={phrase} />
-        <div className="buttonContainer">
-          <button className="new" onClick={handleClick}>New Phrase</button>
-          <button className="setting" onClick={handleSetting}>Switch to Bar</button>
-        </div>
-        <div className="buttonContainer">
-          <button className={`difficulty ${difficultyLevels[0]}`} onClick={(event) => changeDifficulty(event)}>mild</button>
-          <button className={`difficulty ${difficultyLevels[1]}`} onClick={changeDifficulty}>medium</button>
-          <button className={`difficulty ${difficultyLevels[2]}`} onClick={changeDifficulty}>hot</button>
-          <button className={`difficulty ${difficultyLevels[3]}`} onClick={changeDifficulty}>fire</button>
-        </div>
+        <ButtonContainers
+          handleClick={handleClick}
+          handleSetting={handleSetting}
+          changeDifficulty={changeDifficulty}
+          difficultyLevels={difficultyLevels}
+          state='phrase'
+        />
       </>
     )
   } else {
     return (
       <>
         <BarElement bar={bar} />  
-        <div className="buttonContainer">
-          <button className="new" onClick={handleClick}>New Bar</button>
-          <button className="setting" onClick={handleSetting}>Switch to Phrase</button>
-        </div>
-        <div className="buttonContainer">
-          <button className={`difficulty ${difficultyLevels[0]}`} onClick={changeDifficulty}>mild</button>
-          <button className={`difficulty ${difficultyLevels[1]}`} onClick={changeDifficulty}>medium</button>
-          <button className={`difficulty ${difficultyLevels[2]}`} onClick={changeDifficulty}>hot</button>
-          <button className={`difficulty ${difficultyLevels[3]}`} onClick={changeDifficulty}>fire</button>
-        </div>
+        <ButtonContainers
+          handleClick={handleClick}
+          handleSetting={handleSetting}
+          changeDifficulty={changeDifficulty}
+          difficultyLevels={difficultyLevels}
+          state='bar'
+        />
       </>
     )
   }
