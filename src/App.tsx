@@ -14,13 +14,15 @@ function App() {
   const [setting, setSetting] = useState('bar');
   const [difficulty, setDifficulty] = useState(difficultyLevels[0]);
 
-  function changeDifficulty(event) {
-    if(!event.target) return
-    setDifficulty(event.target.textContent);
-    setBar(new Bar(4, event.target.textContent));
-    setPhrase(new Phrase(4, event.target.textContent));
+  function changeDifficulty(e: Event) {
+    if(!e.target) return
+    const target = e.target as HTMLButtonElement;
+    if (!target.textContent) return
+    setDifficulty(target.textContent);
+    setBar(new Bar(4, target.textContent));
+    setPhrase(new Phrase(4, target.textContent));
     document.querySelector('.selected')?.classList.remove('selected');
-    event.target.classList.add('selected');
+    target.classList.add('selected');
   }
 
   function handleClick() {
