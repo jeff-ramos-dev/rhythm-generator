@@ -8,25 +8,22 @@ body {
   place-items: center;
 }
 
+button {
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 4px;
+  background-color: black;
+  color: white;
+}
+
+.selected {
+  background-color: rgb(76, 42, 48);
+}
+
 .buttonContainer {
+  margin-top: 20px;
   display: flex;
   justify-content: space-around;
-}
-
-.new {
-  border: 2px solid grey;
-  border-radius: 5px;
-  padding: 4px;
-  background-color: black;
-  color: white;
-}
-
-.setting {
-  border: 2px solid grey;
-  border-radius: 5px;
-  padding: 4px;
-  background-color: black;
-  color: white;
 }
 
 .bar-container {
