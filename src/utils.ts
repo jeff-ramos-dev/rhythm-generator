@@ -1,4 +1,3 @@
-// Need to decide on minimums and maximums subdivisionCount, beatCount, and barCount
 import quarterRest from './assets/0000.png'
 import one from './assets/1000.png'
 import e from './assets/0100.png'

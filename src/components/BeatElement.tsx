@@ -1,3 +1,5 @@
+import { SubdivisionMap } from '../utils.ts'
+
 type imgProps = {
     beatNumber: string;
     permutation: string;
@@ -15,7 +17,7 @@ export default function BeatImage(props: imgProps) {
         <img 
           key={beatNumber} 
           className={classes}
-          src={`src/assets/${permutation}.png`}
+          src={SubdivisionMap.FOUR[permutation]}
         />
     )
 }
