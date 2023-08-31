@@ -64,22 +64,22 @@ const SubdivisionMap: Record<Subdivision, SubdivisionMetadata> = {
 
 class Beat {
     subdivisions: string[] 
-    mildSubdivisions = ['0000', '1000', '1010', '0010'];
-    mediumSubdivisions = [
-        ...this.mildSubdivisions, 
+    lvl0Subdivisions = ['0000', '1000', '1010', '0010'];
+    lvl1Subdivisions = [
+        ...this.lvl0Subdivisions, 
             '1111', 
             '1110', 
             '1011'
         ];
-    hotSubdivisions = [
-        ...this.mediumSubdivisions, 
+    lvl2Subdivisions = [
+        ...this.lvl1Subdivisions, 
             '1001', 
             '0011', 
             '1100', 
             '1101'
         ];
-    fireSubdivisions = [
-        ...this.hotSubdivisions, 
+    lvl3Subdivisions = [
+        ...this.lvl2Subdivisions, 
             '0101', 
             '0110', 
             '0111', 
@@ -93,29 +93,29 @@ class Beat {
         switch (difficulty) {
             case difficultyLevels[0]:
                 this.subdivisions.push(
-                    this.mildSubdivisions[
-                        Math.floor(Math.random() * this.mildSubdivisions.length)
+                    this.lvl0Subdivisions[
+                        Math.floor(Math.random() * this.lvl0Subdivisions.length)
                     ]
                 )
                 break;
             case difficultyLevels[1]:
                 this.subdivisions.push(
-                    this.mediumSubdivisions[
-                        Math.floor(Math.random() * this.mediumSubdivisions.length)
+                    this.lvl1Subdivisions[
+                        Math.floor(Math.random() * this.lvl1Subdivisions.length)
                     ]
                 )
                 break;
             case difficultyLevels[2]:
                 this.subdivisions.push(
-                    this.hotSubdivisions[
-                        Math.floor(Math.random() * this.hotSubdivisions.length)
+                    this.lvl2Subdivisions[
+                        Math.floor(Math.random() * this.lvl2Subdivisions.length)
                     ]
                 )
                 break;
             case difficultyLevels[3]:
                 this.subdivisions.push(
-                    this.fireSubdivisions[
-                        Math.floor(Math.random() * this.fireSubdivisions.length)
+                    this.lvl3Subdivisions[
+                        Math.floor(Math.random() * this.lvl3Subdivisions.length)
                     ]
                 )
                 break;
