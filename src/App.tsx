@@ -5,22 +5,26 @@ import PhraseElement from './components/PhraseElement.tsx'
 import BarElement from './components/BarElement.tsx'
 
 function App() {
-  const initialBar = new Bar(4, 'easy');
-  const initialPhrase = new Phrase(4, 'easy');
+  const initialBar = new Bar(4, 'mild');
+  const initialPhrase = new Phrase(4, 'mild');
 
   const [bar, setBar] = useState(initialBar);
   const [phrase, setPhrase] = useState(initialPhrase);
   const [setting, setSetting] = useState('bar');
   const [difficulty, setDifficulty] = useState(difficultyLevels[0]);
 
-  function changeDifficulty() {
-// set difficulty to whatever button was clicked
-// remove selected class from other buttons and add to this one
+  function changeDifficulty(event) {
+    if(!event.target) return
+    setDifficulty(event.target.textContent);
+    setBar(new Bar(4, event.target.textContent));
+    setPhrase(new Phrase(4, event.target.textContent));
+    document.querySelector('.selected')?.classList.remove('selected');
+    event.target.classList.add('selected');
   }
 
   function handleClick() {
-    setBar(new Bar(4, difficultyLevels[0]));
-    setPhrase(new Phrase(4, difficultyLevels[0]));
+    setBar(new Bar(4, difficulty));
+    setPhrase(new Phrase(4, difficulty));
   }
   
   function handleSetting() {
@@ -40,10 +44,10 @@ function App() {
           <button className="setting" onClick={handleSetting}>Switch to Bar</button>
         </div>
         <div className="buttonContainer">
-          <button className={`difficulty ${difficultyLevels[0]}`} onClick={changeDifficulty}>Easy</button>
-          <button className={`difficulty ${difficultyLevels[1]}`} onClick={changeDifficulty}>mediumEasy</button>
-          <button className={`difficulty ${difficultyLevels[2]}`} onClick={changeDifficulty}>mediumHard</button>
-          <button className={`difficulty ${difficultyLevels[3]}`} onClick={changeDifficulty}>Hard</button>
+          <button className={`difficulty ${difficultyLevels[0]}`} onClick={(event) => changeDifficulty(event)}>mild</button>
+          <button className={`difficulty ${difficultyLevels[1]}`} onClick={changeDifficulty}>medium</button>
+          <button className={`difficulty ${difficultyLevels[2]}`} onClick={changeDifficulty}>hot</button>
+          <button className={`difficulty ${difficultyLevels[3]}`} onClick={changeDifficulty}>fire</button>
         </div>
       </>
     )
@@ -56,10 +60,10 @@ function App() {
           <button className="setting" onClick={handleSetting}>Switch to Phrase</button>
         </div>
         <div className="buttonContainer">
-          <button className={`difficulty ${difficultyLevels[0]}`} onClick={changeDifficulty}>Easy</button>
-          <button className={`difficulty ${difficultyLevels[1]}`} onClick={changeDifficulty}>mediumEasy</button>
-          <button className={`difficulty ${difficultyLevels[2]}`} onClick={changeDifficulty}>mediumHard</button>
-          <button className={`difficulty ${difficultyLevels[3]}`} onClick={changeDifficulty}>Hard</button>
+          <button className={`difficulty ${difficultyLevels[0]}`} onClick={changeDifficulty}>mild</button>
+          <button className={`difficulty ${difficultyLevels[1]}`} onClick={changeDifficulty}>medium</button>
+          <button className={`difficulty ${difficultyLevels[2]}`} onClick={changeDifficulty}>hot</button>
+          <button className={`difficulty ${difficultyLevels[3]}`} onClick={changeDifficulty}>fire</button>
         </div>
       </>
     )
