@@ -1,7 +1,7 @@
 import barline from '../assets/Barline.png'
 import staff from '../assets/Stave-lines-1-system.png'
 import timeSignature from '../assets/4-4.png'
-import {Bar} from '../beatLogic.ts'
+import {Bar} from '../utils.ts'
 import BeatImage from './BeatElement.tsx'
 
 type barProps = {
@@ -18,12 +18,11 @@ export default function BarElement(props: barProps) {
             <img className="time-signature " src={timeSignature} alt="time-signature" />
             {
                 bar.beats.map((beat, index) => {
-                    const subs = beat.subdivisions.join('');
                     return (
                         <BeatImage
                             key={beatNumbers[index]}
                             beatNumber={beatNumbers[index]}
-                            permutation={subs}
+                            permutation={beat.subdivisions.join('')}
                         />
                     )
                 })

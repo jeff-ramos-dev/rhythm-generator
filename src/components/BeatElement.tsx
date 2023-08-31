@@ -2,6 +2,7 @@ type imgProps = {
     beatNumber: string;
     permutation: string;
 }
+
 export default function BeatImage(props: imgProps) {
     const {beatNumber, permutation} = props;
     let classes;
