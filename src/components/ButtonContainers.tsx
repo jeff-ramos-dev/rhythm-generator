@@ -49,6 +49,12 @@ export default function ButtonContainers(props: buttonProps) {
                 >
                     fire
                 </button>
+                <button 
+                    className={`difficulty triplet-difficulty`} 
+                    onClick={(event) => changeDifficulty(event)}
+                >
+                   triplet 
+                </button>
             </div>
         </>
     )

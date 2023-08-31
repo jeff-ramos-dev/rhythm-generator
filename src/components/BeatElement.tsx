@@ -7,17 +7,19 @@ type imgProps = {
 
 export default function BeatImage(props: imgProps) {
     const {beatNumber, permutation} = props;
-    let classes;
-    if (permutation.length === 3 && !['000', '100'].includes(permutation)) {
-        classes = `note triplet ${beatNumber}`
+    let classes = `note ${beatNumber}`
+    let subdivisions;
+    if (permutation.length === 3) {
+        ['000','100'].includes(permutation) ? classes = classes : classes += " triplet";
+        subdivisions = SubdivisionMap.THREE[permutation];
     } else {
-        classes = `note ${beatNumber}`
+        subdivisions = SubdivisionMap.FOUR[permutation];
     }
     return (
         <img 
-          key={beatNumber} 
-          className={classes}
-          src={SubdivisionMap.FOUR[permutation]}
+            key={beatNumber} 
+            className={classes}
+            src={subdivisions}
         />
     )
 }

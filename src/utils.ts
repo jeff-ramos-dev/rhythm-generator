@@ -119,6 +119,12 @@ class Beat {
                     ]
                 )
                 break;
+            case 'triplet':
+                this.subdivisions.push(
+                    this.tripletSubdivisions[
+                        Math.floor(Math.random() * this.tripletSubdivisions.length)
+                    ]
+                )
         }
 
     }
