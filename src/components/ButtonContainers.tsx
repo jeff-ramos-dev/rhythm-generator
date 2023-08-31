@@ -26,7 +26,7 @@ export default function ButtonContainers(props: buttonProps) {
             </div>
             <div className="buttonContainer">
                 <button 
-                    className={`difficulty ${difficultyLevels[0]}`} 
+                    className={`difficulty ${difficultyLevels[0]} selected`} 
                     onClick={(event) => changeDifficulty(event)}
                 >
                     mild
